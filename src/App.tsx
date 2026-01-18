@@ -10,7 +10,7 @@ import { solarTerms } from './data/solarTerms';
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-[var(--color-background)]">
+      <div className="min-h-screen bg-[var(--color-background)] overflow-x-hidden">
         <Header />
         <ScrollProgress />
         

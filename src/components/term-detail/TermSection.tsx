@@ -13,7 +13,7 @@ export const TermSection = ({ term, index }: TermSectionProps) => {
   return (
     <section
       id={`term-${term.id}`}
-      className="py-10 md:py-16 px-4 border-b border-[var(--color-primary)]/10 last:border-b-0"
+      className="py-10 md:py-16 px-4 border-b border-[var(--color-primary)]/10 last:border-b-0 overflow-hidden"
     >
       <div className="max-w-6xl mx-auto">
         <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-6 lg:gap-16`}>
