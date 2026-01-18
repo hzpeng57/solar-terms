@@ -34,13 +34,13 @@ export const Timeline = () => {
   };
 
   return (
-    <section id="timeline" className="py-20 px-4">
+    <section id="timeline" className="py-12 md:py-20 px-4">
       <div className="max-w-4xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-chinese font-bold text-center text-[var(--color-text)] mb-4"
+          className="text-2xl md:text-4xl font-chinese font-bold text-center text-[var(--color-text)] mb-2 md:mb-4"
         >
           时间线
         </motion.h2>
@@ -49,15 +49,15 @@ export const Timeline = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-center text-[var(--color-text-muted)] mb-12 max-w-xl mx-auto"
+          className="text-sm md:text-base text-center text-[var(--color-text-muted)] mb-8 md:mb-12 max-w-xl mx-auto"
         >
           二十四节气，一年四季的时光轮转
         </motion.p>
 
         {/* Timeline Container */}
         <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--color-primary)]/20 via-[var(--color-primary)]/40 to-[var(--color-primary)]/20 -translate-x-1/2" />
+          {/* Vertical Line - left on mobile, center on desktop */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--color-primary)]/20 via-[var(--color-primary)]/40 to-[var(--color-primary)]/20 md:-translate-x-1/2" />
 
           {/* Timeline Items */}
           {renderTimelineItems()}

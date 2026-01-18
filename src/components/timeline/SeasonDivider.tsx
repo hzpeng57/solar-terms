@@ -20,21 +20,22 @@ export const SeasonDivider = ({ season }: SeasonDividerProps) => {
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      className="relative flex items-center justify-center py-12"
+      className="relative flex items-center py-6 md:py-12 pl-10 md:pl-0 md:justify-center"
     >
-      {/* Solid background to cover the timeline */}
-      <div className="absolute left-1/2 -translate-x-1/2 w-40 h-full bg-[var(--color-background)]" />
+      {/* Solid background to cover the timeline - left on mobile, center on desktop */}
+      <div className="hidden md:block absolute left-1/2 -translate-x-1/2 w-40 h-full bg-[var(--color-background)]" />
+      <div className="md:hidden absolute left-0 w-20 h-full bg-[var(--color-background)]" />
       
-      <div className="relative z-10 flex items-center gap-4">
-        <div className="h-px w-16 bg-gradient-to-r from-transparent to-[var(--color-primary)]/30" />
-        <div className="flex items-center gap-2 px-6 py-3 bg-[var(--color-surface)] rounded-full shadow-md border border-[var(--color-primary)]/10">
-          <span className="text-2xl">{data.icon}</span>
-          <span className="font-chinese text-2xl font-bold text-[var(--color-text)]">
+      <div className="relative z-10 flex items-center gap-2 md:gap-4">
+        <div className="hidden md:block h-px w-16 bg-gradient-to-r from-transparent to-[var(--color-primary)]/30" />
+        <div className="flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-[var(--color-surface)] rounded-full shadow-md border border-[var(--color-primary)]/10">
+          <span className="text-xl md:text-2xl">{data.icon}</span>
+          <span className="font-chinese text-xl md:text-2xl font-bold text-[var(--color-text)]">
             {data.nameCN}
           </span>
-          <span className="text-sm text-[var(--color-text-muted)]">{data.name}</span>
+          <span className="text-xs md:text-sm text-[var(--color-text-muted)]">{data.name}</span>
         </div>
-        <div className="h-px w-16 bg-gradient-to-l from-transparent to-[var(--color-primary)]/30" />
+        <div className="hidden md:block h-px w-16 bg-gradient-to-l from-transparent to-[var(--color-primary)]/30" />
       </div>
     </motion.div>
   );
