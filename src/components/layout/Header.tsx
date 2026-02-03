@@ -51,7 +51,13 @@ export const Header = () => {
             >
               时间线
             </button>
-            
+            <button
+              onClick={() => scrollToSection('calendar')}
+              className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors cursor-pointer"
+            >
+              日历
+            </button>
+
             {/* Season Switcher */}
             <div className="flex items-center gap-1 ml-4 p-1 bg-[var(--color-background)] rounded-full">
               {seasons.map((s) => (

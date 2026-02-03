@@ -83,6 +83,12 @@ export const MobileNav = ({
             >
               时间线
             </button>
+            <button
+              onClick={() => handleNavClick('calendar')}
+              className="block w-full text-left px-4 py-2 text-lg font-medium text-[var(--color-text)] hover:text-[var(--color-primary)] hover:bg-[var(--color-background)] rounded-lg transition-colors cursor-pointer"
+            >
+              日历
+            </button>
           </nav>
 
           {/* Season Switcher */}

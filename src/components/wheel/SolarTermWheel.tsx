@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { solarTerms } from '../../data/solarTerms';
-import { useScrollToSection } from '../../hooks/useScrollToSection';
 import { useCurrentTerm } from '../../hooks/useCurrentTerm';
+import { useTermModal } from '../../context/TermModalContext';
 import { wheelRotate } from '../../lib/animations';
 import type { SolarTerm } from '../../data/types';
 
@@ -104,13 +104,13 @@ const WheelSegment = ({ term, index, isActive, isHovered, onHover, onClick, size
 export const SolarTermWheel = () => {
   const { currentTerm } = useCurrentTerm();
   const [hoveredTerm, setHoveredTerm] = useState<SolarTerm | null>(null);
-  const scrollToSection = useScrollToSection();
+  const { openTerm } = useTermModal();
 
   // Display term: show hovered term, or default to current term
   const displayTerm = hoveredTerm || currentTerm;
 
   const handleSegmentClick = (term: SolarTerm) => {
-    scrollToSection(`term-${term.id}`);
+    openTerm(term.id);
   };
 
   const currentIndex = solarTerms.findIndex((t) => t.id === currentTerm.id);

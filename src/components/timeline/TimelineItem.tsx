@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import type { SolarTerm } from '../../data/types';
-import { useScrollToSection } from '../../hooks/useScrollToSection';
+import { useTermModal } from '../../context/TermModalContext';
 
 interface TimelineItemProps {
   term: SolarTerm;
@@ -9,7 +9,7 @@ interface TimelineItemProps {
 }
 
 export const TimelineItem = ({ term, isLeft }: TimelineItemProps) => {
-  const scrollToSection = useScrollToSection();
+  const { openTerm } = useTermModal();
 
   return (
     <div className="relative mb-6 md:mb-8">
@@ -33,7 +33,7 @@ export const TimelineItem = ({ term, isLeft }: TimelineItemProps) => {
         {/* Content Card */}
         <motion.div
           whileHover={{ scale: 1.02 }}
-          onClick={() => scrollToSection(`term-${term.id}`)}
+          onClick={() => openTerm(term.id)}
           className={`
             chinese-card w-full max-w-md p-4 md:p-5
             cursor-pointer hover:shadow-md transition-shadow
