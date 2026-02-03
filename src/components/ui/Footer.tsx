@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export const Footer = () => {
   return (
-    <footer className="py-8 md:py-12 px-4 bg-[var(--color-surface)] border-t border-[var(--color-primary)]/10">
+    <footer className="py-8 md:py-12 px-4 bg-[var(--color-surface)] relative before:absolute before:top-0 before:left-0 before:right-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[var(--color-ink)]/20 before:to-transparent">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

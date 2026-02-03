@@ -25,7 +25,7 @@ export const Header = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-surface)]/80 backdrop-blur-md border-b border-[var(--color-primary)]/10"
+        className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-surface)]/90 backdrop-blur-md after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-[var(--color-primary)]/40 after:to-transparent"
         style={{ height: 'var(--header-height)' }}
       >
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">

@@ -1,54 +1,227 @@
 @import "tailwindcss";
 
 :root {
-  --color-primary: #3b82f6;
-  --color-secondary: #93c5fd;
-  --color-accent: #6b7280;
-  --color-background: #f8fafc;
-  --color-surface: #ffffff;
-  --color-text: #1e3a5f;
-  --color-text-muted: #64748b;
+  /* 默认配色 - 黛青系 */
+  --color-primary: #4A5568;
+  --color-secondary: #A0AEC0;
+  --color-accent: #718096;
+  --color-background: #F5F5F3;
+  --color-surface: #FAFAF8;
+  --color-text: #2D3748;
+  --color-text-muted: #718096;
+  --color-ink: #1A202C;
+  --color-border: #D1D5DB;
+
+  /* 字体 */
   --font-chinese: "Noto Serif SC", "Songti SC", "SimSun", serif;
   --font-display: "Playfair Display", Georgia, serif;
   --font-body: "Inter", "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+
+  /* 布局 */
   --header-height: 4rem;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* 春季 - 松花绿系 */
 [data-season="spring"] {
-  --color-primary: #22c55e; --color-secondary: #86efac; --color-accent: #f472b6;
-  --color-background: #f0fdf4; --color-surface: #ffffff; --color-text: #166534; --color-text-muted: #4ade80;
-}
-[data-season="summer"] {
-  --color-primary: #ef4444; --color-secondary: #fbbf24; --color-accent: #fb923c;
-  --color-background: #fef2f2; --color-surface: #ffffff; --color-text: #991b1b; --color-text-muted: #f87171;
-}
-[data-season="autumn"] {
-  --color-primary: #f59e0b; --color-secondary: #d97706; --color-accent: #dc2626;
-  --color-background: #fffbeb; --color-surface: #ffffff; --color-text: #92400e; --color-text-muted: #fbbf24;
-}
-[data-season="winter"] {
-  --color-primary: #3b82f6; --color-secondary: #93c5fd; --color-accent: #6b7280;
-  --color-background: #f0f9ff; --color-surface: #ffffff; --color-text: #1e40af; --color-text-muted: #60a5fa;
+  --color-primary: #3C9566;
+  --color-secondary: #A4CAB6;
+  --color-accent: #C9A5A1;
+  --color-background: #F7F5F0;
+  --color-surface: #FDFCF8;
+  --color-text: #2D4A3E;
+  --color-text-muted: #7A9B8A;
+  --color-ink: #1A2F24;
+  --color-border: #C5D4CB;
 }
 
-html { 
-  scroll-behavior: smooth; 
+/* 夏季 - 胭脂系 */
+[data-season="summer"] {
+  --color-primary: #C04851;
+  --color-secondary: #E8B49A;
+  --color-accent: #8B614B;
+  --color-background: #FDF6F0;
+  --color-surface: #FFFAF7;
+  --color-text: #5C3D31;
+  --color-text-muted: #B08878;
+  --color-ink: #3D2317;
+  --color-border: #E5D0C5;
+}
+
+/* 秋季 - 藤黄系 */
+[data-season="autumn"] {
+  --color-primary: #C28B3D;
+  --color-secondary: #D9A86C;
+  --color-accent: #8C5A3C;
+  --color-background: #FAF6ED;
+  --color-surface: #FEFCF5;
+  --color-text: #5A4428;
+  --color-text-muted: #A89070;
+  --color-ink: #3A2A15;
+  --color-border: #E5DBC8;
+}
+
+/* 冬季 - 黛青系 */
+[data-season="winter"] {
+  --color-primary: #4A5568;
+  --color-secondary: #A0AEC0;
+  --color-accent: #718096;
+  --color-background: #F5F5F3;
+  --color-surface: #FAFAF8;
+  --color-text: #2D3748;
+  --color-text-muted: #718096;
+  --color-ink: #1A202C;
+  --color-border: #D1D5DB;
+}
+
+html {
+  scroll-behavior: smooth;
   overflow-x: hidden;
 }
+
 body {
-  margin: 0; 
-  font-family: var(--font-body); 
+  margin: 0;
+  font-family: var(--font-body);
   background-color: var(--color-background);
-  color: var(--color-text); 
+  color: var(--color-text);
   line-height: 1.6;
   transition: background-color 0.5s var(--ease-out-expo), color 0.5s var(--ease-out-expo);
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
 }
+
 .font-chinese { font-family: var(--font-chinese); }
 ::selection { background-color: var(--color-primary); color: white; }
+
+/* 宣纸纹理效果 - 增强版 */
+.paper-texture {
+  position: relative;
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, transparent 40%, rgba(0,0,0,0.01) 50%, transparent 60%);
+}
+
+/* 水墨渐变边框 */
+.ink-border {
+  position: relative;
+}
+.ink-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-border) 25%,
+    transparent 50%,
+    var(--color-border) 75%,
+    var(--color-primary) 100%
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* 印章样式 */
+.seal-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-primary);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  font-family: var(--font-chinese);
+  font-weight: 700;
+  color: var(--color-primary);
+  background: linear-gradient(135deg, transparent 0%, var(--color-primary)/5 50%, transparent 100%);
+  box-shadow: inset 0 0 0 1px var(--color-primary)/20;
+}
+
+/* 国风卡片 - 带角落装饰 */
+.chinese-card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+.chinese-card::before,
+.chinese-card::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--color-primary);
+  border-style: solid;
+  opacity: 0.4;
+}
+
+.chinese-card::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+  border-radius: 4px 0 0 0;
+}
+
+.chinese-card::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+  border-radius: 0 0 4px 0;
+}
+
+/* 竖排文字 */
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* 分隔线装饰 */
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.divider-ornament::before,
+.divider-ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-primary)/30, transparent);
+}
+
+/* 诗词引用样式 */
+.poem-quote {
+  position: relative;
+  padding: 1rem 1.5rem;
+  font-family: var(--font-chinese);
+}
+.poem-quote::before {
+  content: '"';
+  position: absolute;
+  top: -0.5rem;
+  left: 0;
+  font-size: 3rem;
+  color: var(--color-primary);
+  opacity: 0.2;
+  line-height: 1;
+}
+.poem-quote::after {
+  content: '"';
+  position: absolute;
+  bottom: -1.5rem;
+  right: 0;
+  font-size: 3rem;
+  color: var(--color-primary);
+  opacity: 0.2;
+  line-height: 1;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

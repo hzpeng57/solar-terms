@@ -7,10 +7,10 @@ import { wheelRotate } from '../../lib/animations';
 import type { SolarTerm } from '../../data/types';
 
 const seasonColors: Record<string, string> = {
-  spring: '#22c55e',
-  summer: '#ef4444',
-  autumn: '#f59e0b',
-  winter: '#3b82f6',
+  spring: '#3C9566',  // 松花绿
+  summer: '#C04851',  // 胭脂
+  autumn: '#C28B3D',  // 藤黄
+  winter: '#4A5568',  // 黛青
 };
 
 interface WheelSegmentProps {
@@ -203,22 +203,18 @@ export const SolarTermWheel = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="w-full max-w-sm bg-[var(--color-surface)] rounded-2xl p-4 md:p-6 shadow-lg border border-[var(--color-primary)]/10"
+            className="chinese-card w-full max-w-sm p-5 md:p-6"
           >
             {/* Header */}
             <div className="flex items-center gap-3 mb-3">
-              <div
-                className="w-4 h-4 rounded-full flex-shrink-0"
-                style={{ backgroundColor: seasonColors[displayTerm.season] }}
-              />
-              <span className="text-sm text-[var(--color-text-muted)]">
+              <span className="seal-box text-xs">
                 {displayTerm.season === 'spring' && '春'}
                 {displayTerm.season === 'summer' && '夏'}
                 {displayTerm.season === 'autumn' && '秋'}
                 {displayTerm.season === 'winter' && '冬'}
               </span>
               {!hoveredTerm && (
-                <span className="ml-auto text-xs px-2 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full">
+                <span className="ml-auto text-xs px-2 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded">
                   当前
                 </span>
               )}
@@ -239,7 +235,7 @@ export const SolarTermWheel = () => {
             <p className="text-sm text-[var(--color-text)] mb-4">{displayTerm.descriptionCN}</p>
             
             {/* Poem - compact */}
-            <div className="mb-4 p-3 bg-[var(--color-background)] rounded-lg">
+            <div className="mb-4 p-3 bg-[var(--color-background)] rounded border border-[var(--color-border)]">
               <p className="font-chinese text-sm text-[var(--color-text)]">
                 {displayTerm.poem.contentCN.join('')}
               </p>
@@ -254,7 +250,7 @@ export const SolarTermWheel = () => {
                 {displayTerm.characteristicsCN.map((char, i) => (
                   <span
                     key={i}
-                    className="px-2 py-0.5 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded text-xs"
+                    className="px-2 py-0.5 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded text-xs border border-[var(--color-primary)]/20"
                   >
                     {char}
                   </span>
@@ -264,7 +260,7 @@ export const SolarTermWheel = () => {
             
             <button
               onClick={() => handleSegmentClick(displayTerm)}
-              className="w-full py-2 bg-[var(--color-primary)] text-white rounded-lg hover:opacity-90 transition-opacity cursor-pointer text-sm md:text-base"
+              className="w-full py-2 bg-[var(--color-primary)] text-white rounded hover:opacity-90 transition-opacity cursor-pointer text-sm md:text-base"
             >
               查看详情
             </button>

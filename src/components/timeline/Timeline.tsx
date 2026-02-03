@@ -56,8 +56,8 @@ export const Timeline = () => {
 
         {/* Timeline Container */}
         <div className="relative">
-          {/* Vertical Line - left on mobile, center on desktop */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--color-primary)]/20 via-[var(--color-primary)]/40 to-[var(--color-primary)]/20 md:-translate-x-1/2" />
+          {/* 水墨渐变竖线 */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[var(--color-ink)]/30 to-transparent md:-translate-x-1/2" />
 
           {/* Timeline Items */}
           {renderTimelineItems()}
