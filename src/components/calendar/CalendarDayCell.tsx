@@ -27,19 +27,8 @@ export const CalendarDayCell = ({ day, isSelected, onSelect }: CalendarDayCellPr
   // 判断是否是"休息日"：周末且非调班，或者有节假日放假
   const isRestDay = (isWeekend && !isWorkday) || isHoliday;
 
-  // 显示优先级：节日名 > 节气 > 农历
-  const getSecondaryText = () => {
-    if (holiday && !holiday.isWork) {
-      return holiday.name;
-    }
-    if (jieQi) {
-      return jieQi;
-    }
-    return lunarDay;
-  };
-
-  const secondaryText = getSecondaryText();
-  const isSpecialDay = jieQi || (holiday && !holiday.isWork);
+  // 节假日名称（只显示放假的，不显示调班）
+  const holidayName = holiday && !holiday.isWork ? holiday.name : null;
 
   return (
     <motion.button
@@ -67,16 +56,24 @@ export const CalendarDayCell = ({ day, isSelected, onSelect }: CalendarDayCellPr
         {dayNum}
       </span>
 
-      {/* 农历/节气/节日 */}
+      {/* 农历/节气 */}
       <span
         className={`
           text-[10px] md:text-xs leading-none mt-0.5 md:mt-1 truncate max-w-full px-0.5
-          ${isSpecialDay ? 'text-[var(--color-primary)] font-medium' : 'text-[var(--color-text-muted)]'}
-          ${jieQi ? 'border-b border-[var(--color-primary)]' : ''}
+          ${jieQi ? 'text-[var(--color-primary)] font-medium border-b border-[var(--color-primary)]' : 'text-[var(--color-text-muted)]'}
         `}
       >
-        {secondaryText}
+        {jieQi || lunarDay}
       </span>
+
+      {/* 节假日名称 */}
+      {holidayName && (
+        <span
+          className="text-[8px] md:text-[10px] leading-none mt-0.5 truncate max-w-full px-0.5 text-red-500 font-medium"
+        >
+          {holidayName}
+        </span>
+      )}
 
       {/* 休/班标记 */}
       {(isHoliday || isWorkday) && (
