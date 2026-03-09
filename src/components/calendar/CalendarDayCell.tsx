@@ -16,7 +16,6 @@ export const CalendarDayCell = ({ day, isSelected, onSelect }: CalendarDayCellPr
     isToday,
     jieQi,
     festival,
-    holiday,
     isHoliday,
     isWorkday,
   } = day;
