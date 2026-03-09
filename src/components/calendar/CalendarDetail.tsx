@@ -74,51 +74,55 @@ export const CalendarDetail = ({ day, onClose }: CalendarDetailProps) => {
         )}
 
         {/* 节气信息 */}
-        {jieQi && termData && (
+        {jieQi && (
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <span className="seal-box text-xs">节气</span>
               <span className="font-chinese text-lg font-bold text-[var(--color-primary)]">{jieQi}</span>
-              <span className="text-sm text-[var(--color-text-muted)]">{termData.pinyin}</span>
+              {termData && <span className="text-sm text-[var(--color-text-muted)]">{termData.pinyin}</span>}
             </div>
 
-            {/* 节气描述 */}
-            <p className="text-sm text-[var(--color-text)] leading-relaxed">
-              {termData.descriptionCN}
-            </p>
+            {termData && (
+              <>
+                {/* 节气描述 */}
+                <p className="text-sm text-[var(--color-text)] leading-relaxed">
+                  {termData.descriptionCN}
+                </p>
 
-            {/* 三候 */}
-            <div>
-              <p className="text-xs text-[var(--color-text-muted)] mb-1.5">三候</p>
-              <div className="flex flex-wrap gap-1.5">
-                {termData.characteristicsCN.map((char, i) => (
-                  <span
-                    key={i}
-                    className="px-2 py-0.5 text-xs bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded"
-                  >
-                    {char}
-                  </span>
-                ))}
-              </div>
-            </div>
+                {/* 三候 */}
+                <div>
+                  <p className="text-xs text-[var(--color-text-muted)] mb-1.5">三候</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {termData.characteristicsCN.map((char, i) => (
+                      <span
+                        key={i}
+                        className="px-2 py-0.5 text-xs bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded"
+                      >
+                        {char}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-            {/* 诗词 */}
-            <div className="pt-2 border-t border-[var(--color-border)]">
-              <p className="font-chinese text-sm text-[var(--color-text)] leading-relaxed">
-                {termData.poem.contentCN.slice(0, 2).join('')}
-              </p>
-              <p className="text-xs text-[var(--color-text-muted)] mt-1">
-                —— {termData.poem.authorCN}《{termData.poem.titleCN}》
-              </p>
-            </div>
+                {/* 诗词 */}
+                <div className="pt-2 border-t border-[var(--color-border)]">
+                  <p className="font-chinese text-sm text-[var(--color-text)] leading-relaxed">
+                    {termData.poem.contentCN.slice(0, 2).join('')}
+                  </p>
+                  <p className="text-xs text-[var(--color-text-muted)] mt-1">
+                    —— {termData.poem.authorCN}《{termData.poem.titleCN}》
+                  </p>
+                </div>
 
-            {/* 查看详情按钮 */}
-            <button
-              onClick={handleViewTermDetail}
-              className="w-full mt-3 py-2 bg-[var(--color-primary)] text-white rounded text-sm hover:opacity-90 transition-opacity cursor-pointer"
-            >
-              查看详情
-            </button>
+                {/* 查看详情按钮 */}
+                <button
+                  onClick={handleViewTermDetail}
+                  className="w-full mt-3 py-2 bg-[var(--color-primary)] text-white rounded text-sm hover:opacity-90 transition-opacity cursor-pointer"
+                >
+                  查看详情
+                </button>
+              </>
+            )}
           </div>
         )}
 

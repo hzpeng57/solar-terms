@@ -28,9 +28,6 @@ export const CalendarDayCell = ({ day, isSelected, onSelect }: CalendarDayCellPr
   // 判断是否是"休息日"：周末且非调班，或者有节假日放假
   const isRestDay = (isWeekend && !isWorkday) || isHoliday;
 
-  // 节假日名称（只显示放假的，不显示调班）
-  const holidayName = holiday && !holiday.isWork ? holiday.name : null;
-
   return (
     <motion.button
       whileTap={{ scale: 0.95 }}
@@ -70,15 +67,6 @@ export const CalendarDayCell = ({ day, isSelected, onSelect }: CalendarDayCellPr
       >
         {jieQi || festival || lunarDay}
       </span>
-
-      {/* 节假日名称 */}
-      {holidayName && (
-        <span
-          className="text-[8px] md:text-[10px] leading-none mt-0.5 truncate max-w-full px-0.5 text-red-500 font-medium"
-        >
-          {holidayName}
-        </span>
-      )}
 
       {/* 休/班标记 */}
       {(isHoliday || isWorkday) && (
