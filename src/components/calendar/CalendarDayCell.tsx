@@ -15,6 +15,7 @@ export const CalendarDayCell = ({ day, isSelected, onSelect }: CalendarDayCellPr
     isCurrentMonth,
     isToday,
     jieQi,
+    festival,
     holiday,
     isHoliday,
     isWorkday,
@@ -56,14 +57,18 @@ export const CalendarDayCell = ({ day, isSelected, onSelect }: CalendarDayCellPr
         {dayNum}
       </span>
 
-      {/* 农历/节气 */}
+      {/* 节气 > 节日 > 农历 */}
       <span
         className={`
           text-[10px] md:text-xs leading-none mt-0.5 md:mt-1 truncate max-w-full px-0.5
-          ${jieQi ? 'text-[var(--color-primary)] font-medium border-b border-[var(--color-primary)]' : 'text-[var(--color-text-muted)]'}
+          ${jieQi
+            ? 'text-[var(--color-primary)] font-medium border-b border-[var(--color-primary)]'
+            : festival
+              ? 'text-amber-600 font-medium'
+              : 'text-[var(--color-text-muted)]'}
         `}
       >
-        {jieQi || lunarDay}
+        {jieQi || festival || lunarDay}
       </span>
 
       {/* 节假日名称 */}

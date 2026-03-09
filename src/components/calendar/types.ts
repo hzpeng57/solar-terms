@@ -12,6 +12,7 @@ export interface CalendarDay {
   isCurrentMonth: boolean;
   isToday: boolean;
   jieQi: string | null;
+  festival: string | null;
   holiday: {
     name: string;
     isWork: boolean;

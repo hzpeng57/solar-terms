@@ -112,6 +112,11 @@ function createCalendarDay(
   // 获取节气（通过 Lunar 对象获取）
   const jieQi = lunar.getJieQi();
 
+  // 获取民俗节日（农历节日优先，再取公历节日）
+  const lunarFestivals = lunar.getFestivals();
+  const solarFestivals = solar.getFestivals();
+  const festival = lunarFestivals[0] ?? solarFestivals[0] ?? null;
+
   // 获取节假日信息
   const holidayInfo = HolidayUtil.getHoliday(year, month, day);
 
@@ -151,6 +156,7 @@ function createCalendarDay(
     isCurrentMonth,
     isToday,
     jieQi: jieQi || null,
+    festival,
     holiday,
     isHoliday,
     isWorkday,
