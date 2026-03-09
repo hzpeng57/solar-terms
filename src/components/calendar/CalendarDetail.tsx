@@ -13,7 +13,7 @@ export const CalendarDetail = ({ day, onClose }: CalendarDetailProps) => {
 
   if (!day) return null;
 
-  const { year, month, day: dayNum, lunarMonth, lunarDay, jieQi, holiday, isHoliday } = day;
+  const { year, month, day: dayNum, lunarMonth, lunarDay, jieQi, holiday, isHoliday, festival } = day;
 
   // 如果是节气，获取节气详情
   const termData = jieQi ? solarTerms.find((t) => t.nameCN === jieQi) : null;
@@ -73,6 +73,17 @@ export const CalendarDetail = ({ day, onClose }: CalendarDetailProps) => {
           </div>
         )}
 
+        {/* 民俗节日信息 */}
+        {festival && (
+          <div className="mb-4 p-3 rounded-lg bg-amber-50 border border-amber-200">
+            <div className="flex items-center gap-2">
+              <span className="px-2 py-0.5 text-xs font-bold rounded text-amber-600 bg-amber-100">节</span>
+              <span className="font-medium text-amber-600">{festival}</span>
+            </div>
+            <p className="text-sm text-amber-500 mt-1">民俗节日</p>
+          </div>
+        )}
+
         {/* 节气信息 */}
         {jieQi && (
           <div className="space-y-3">
@@ -126,8 +137,8 @@ export const CalendarDetail = ({ day, onClose }: CalendarDetailProps) => {
           </div>
         )}
 
-        {/* 普通日期（无节气无节日） */}
-        {!jieQi && !holiday && (
+        {/* 普通日期（无节气无节日无民俗节日） */}
+        {!jieQi && !holiday && !festival && (
           <p className="text-sm text-[var(--color-text-muted)]">
             农历{lunarMonth}{lunarDay}
           </p>
